@@ -17,8 +17,8 @@ number.
 signext_sel to determine data length dealing, like lw,lh,lb. And use memory address%4 to
 determine which part of data is being loaded, then do sign extension.
   - Control: input instrucƟon from different stages, BrLT, BrEq, reset, alu_out data.
-Control signal:
-  - PC_sel: control pc_mux to select from alu_out(Branch, jump) or
+- Control signal:
+    -  i)PC_sel: control pc_mux to select from alu_out(Branch, jump) or
 pc_adder_out(other)
     -  ii)RegWEn: register file write enable, enabled in instrucƟons need write back
     -  iii) BrUn: if instrucƟon is unsigned, then this signal should be high
