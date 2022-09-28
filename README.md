@@ -4,21 +4,21 @@ This is a simple 3-stage RISC-V CPU with Cache implementation which is capable o
 ## Pipeline
 ![pipeline diagram](https://user-images.githubusercontent.com/89960862/192886805-73d5945c-6d30-4609-a29e-930640efa77c.png)
 The pipeline diagram is shown above 
-Submodules explanation:
-- ALU: consist of two modules: ALU and ALU decoder. ALU decoder input the
+- Submodules explanation:
+  - ALU: consist of two modules: ALU and ALU decoder. ALU decoder input the
 instrucƟon and decode into ALU operaƟons. ALU input ALU decode result and two input data
 and conduct computaƟon.
-- Branch_compare: input two data and BrUn signal, determine if BrLT and BrEq is true
+  - Branch_compare: input two data and BrUn signal, determine if BrLT and BrEq is true
 and output back to the control module.
-- Immediate generator: input imm select signal from control and use combinaƟonal
+  - Immediate generator: input imm select signal from control and use combinaƟonal
 logic to determine what kind of immediate to generate, output generated immediate
 number.
-- Signext: input data, signext_sel, memory address, and 3 bits funcƟon code. Use
+  - Signext: input data, signext_sel, memory address, and 3 bits funcƟon code. Use
 signext_sel to determine data length dealing, like lw,lh,lb. And use memory address%4 to
 determine which part of data is being loaded, then do sign extension.
-- Control: input instrucƟon from different stages, BrLT, BrEq, reset, alu_out data.
+  - Control: input instrucƟon from different stages, BrLT, BrEq, reset, alu_out data.
 Control signal:
---  i) PC_sel: control pc_mux to select from alu_out(Branch, jump) or
+- PC_sel: control pc_mux to select from alu_out(Branch, jump) or
 pc_adder_out(other)
 --  ii)RegWEn: register file write enable, enabled in instrucƟons need write back
 --  iii) BrUn: if instrucƟon is unsigned, then this signal should be high
