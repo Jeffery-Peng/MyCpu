@@ -18,28 +18,28 @@ signext_sel to determine data length dealing, like lw,lh,lb. And use memory addr
 determine which part of data is being loaded, then do sign extension.
 - Control: input instrucƟon from different stages, BrLT, BrEq, reset, alu_out data.
 Control signal:
-  i) PC_sel: control pc_mux to select from alu_out(Branch, jump) or
+--  i) PC_sel: control pc_mux to select from alu_out(Branch, jump) or
 pc_adder_out(other)
-  ii)RegWEn: register file write enable, enabled in instrucƟons need write back
-  iii) BrUn: if instrucƟon is unsigned, then this signal should be high
-  iv) noopSel: if BrLT|BrEq is true, then noopSel is 1Peter Peng & Christopher Keesey
+--  ii)RegWEn: register file write enable, enabled in instrucƟons need write back
+--  iii) BrUn: if instrucƟon is unsigned, then this signal should be high
+--  iv) noopSel: if BrLT|BrEq is true, then noopSel is 1Peter Peng & Christopher Keesey
 Fall 2021 ASIC Lab
-  v)Signext_Sel: if the instrucƟon is load half word, then it is 1, if the instrucƟon
+--  v)Signext_Sel: if the instrucƟon is load half word, then it is 1, if the instrucƟon
 is load byte, then it’s 2. Otherwise it’s 0, no sign extension.
-  vi) ASel,BSel: determine whether to take data from regfile or immediate
+--  vi) ASel,BSel: determine whether to take data from regfile or immediate
 generator or pc or signext_out(ALU forward). Method of hazard detecƟon: if the
 current instrucƟon need data from the regfile and the former instrucƟon needs
 write back whose rd is neither 0 or equal to one of rs of the current instrucƟon or
 equals to both, then there’s a hazard
-  vii) ImmSel: determine what type of immediate number needs to be
+--  vii) ImmSel: determine what type of immediate number needs to be
 generated in the current instrucƟon.Determined by instrucƟon in stage 2
-  viii) WBSel: determine whether to write back pc value or ALU value or
+--  viii) WBSel: determine whether to write back pc value or ALU value or
 memory data to the regfile. Determined by instrucƟon in stage 3
-  ix) MemRW: determined by the instrucƟon(sw,sh,sb) and memory
+--  ix) MemRW: determined by the instrucƟon(sw,sh,sb) and memory
 address(addr%4), it can be output to memory to write different parts of the word.
-  x)Store_data_hazard: hazard control for store instrucƟons.
-  xi) Branch_hazard: hazard control for branch instrucƟons.
-  xii) Csr_hazard: hazard control for csr instrucƟons.
+--  x)Store_data_hazard: hazard control for store instrucƟons.
+--  xi) Branch_hazard: hazard control for branch instrucƟons.
+--  xii) Csr_hazard: hazard control for csr instrucƟons.
 ## Cache
 - The 512 Byte cache consisted of two SRAMs and was constructed using a
 FSM. We implemented a direct mapped cache with 8 64 Byte blocks and a
