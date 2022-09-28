@@ -83,5 +83,5 @@ d. Memory Write, cache hit:
 IDLE→TAGREQ→READTAG→WRITEBACK→WRITEBACKDATA→IDLE
 a. 5 cycles
 Note: Cache does not wait for memory to finish wriƟng back before returning to IDLE state.
-The MEMREQ stge ensures that memory is ready before the next transacƟon!
-[image](https://user-images.githubusercontent.com/89960862/192889366-16892e95-6780-4ee2-b7e0-0f5efa30c091.png)
+The MEMREQ stge ensures that memory is ready before the next transaction
+![image](https://user-images.githubusercontent.com/89960862/192889366-16892e95-6780-4ee2-b7e0-0f5efa30c091.png)
